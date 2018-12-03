@@ -1,0 +1,22 @@
+.centro{
+    text-align: center;
+    
+}
+
+#btcentro,.centro2{
+    display: block;
+    text-align: center;
+}
+
+#display,.display{
+    display: block;
+}
+
+#align{
+    text-align: center;
+}
+
+.dois{
+    text-align: center;
+    display: block;
+}
