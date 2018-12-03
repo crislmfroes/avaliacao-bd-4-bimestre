@@ -1,6 +1,7 @@
 <?php
 include_once('./model/alunoDao.php');
 include_once('./model/turmaDao.php');
+include_once('./model/atividadeDao.php');
 $turma = new Turma("Turma do Mal", 4);
 $turmaDao = new TurmaDao();
 $turmaDao->insert($turma);
@@ -19,4 +20,7 @@ $turmaDao->update($turma);
 #$turma1 = $turmaDao->find(1);
 #$turmaDao->delete($turma1);
 var_dump($turmaDao->list(100, 0));
+$atividade = new Atividade('nome1',new DateTime('12/12/2018'), 10,'disciplina2','descricao2');
+$atividadeDao = new AtividadeDao();
+$atividadeDao->insert($atividade);
 ?>

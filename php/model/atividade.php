@@ -1,5 +1,5 @@
 <?php
-include_once('aluno.php');
+
 class Atividade {
     private $nome;
     private $id;
@@ -7,7 +7,7 @@ class Atividade {
     private $peso;
     private $descricao;
     private $disciplina;
-    public function Turma(string $nome, DateTime $dataEntrega, float $peso, string $descricao, string $disciplina) {
+    public function Atividade(string $nome, DateTime $dataEntrega, float $peso, string $descricao, string $disciplina) {
         $this->nome = $nome;
         $this->dataEntrega = $dataEntrega;
         $this->peso = $peso;
@@ -135,4 +135,16 @@ class Atividade {
         return $this;
     }
 }
+
+//nome, dataEntrega, peso, disciplina, descricao
+$a = new Atividade('nome1',new DateTime('12/12/2018'), 10,'disciplina2','descricao2');
+
+
+//$d=new DateTime(['12/12/2018']);
+//$a->setDataEntrega($d);
+
+
+print_r($a);
+echo $a->getNome();
+
 ?>
