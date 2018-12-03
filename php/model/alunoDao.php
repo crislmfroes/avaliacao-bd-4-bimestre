@@ -52,7 +52,19 @@ class AlunoDao extends Dao {
     }
 
     public function find(int $id) {
-
+        $vetor = array($id);
+        $sql = "SELECT * FROM Aluno WHERE id=$1";
+        $con = getConexao();
+        $res = pg_query_params($con, $sql, $vetor);
+        $assoc = pg_fetch_assoc($res);
+        $aluno = new Aluno($assoc['nome'], $assoc['email']);
+        $aluno->setNota($assoc['nota']);
+        $turmaDao = new TurmaDao();
+        $turma = $turmaDao->find($assoc['codTurma']);
+        $aluno->setTurma($turma);
+        $aluno->setId($assoc['codAluno']);
+        pg_close($con);
+        return $aluno;
     }
 }
 ?>
