@@ -2,32 +2,33 @@
 include_once('dao.php');
 include_once('aluno.php');
 class AlunoDao extends Dao {
-    public function insert(Aluno $aluno) {
+    public function insert($aluno) {
         $vetor = array($aluno->getNome(), $aluno->getEmail(),
-        $aluno->getTurma()->getId());
+        $aluno->getTurma()->getId(), $aluno->getNota());
         $sql = "INSERT INTO Aluno (nome, email,
-        codTurma) VALUES ($1, $2, $3) RETURN codAluno";
-        $con = getConexao();
+        codTurma, nota) VALUES ($1, $2, $3, $4) returning codAluno";
+        $con = $this->getConexao();
         $res = pg_query_params($con, $sql, $vetor);
         $assoc = pg_fetch_assoc($res);
-        $aluno->setId($assoc['codAluno']);
+        var_dump($assoc);
+        $aluno->setId((int)$assoc['codaluno']);
         pg_close($con);
     }
-    public function update(Aluno $aluno) {
+    public function update($aluno) {
         $vetor = array($aluno->getNome(), $aluno->getEmail(),
-        $aluno->getTurma()->getId(), $aluno->getId());
+        $aluno->getTurma()->getId(), $aluno->getNota(), $aluno->getId());
         $sql = "UPDATE Aluno SET nome=$1, email=$2,
-                codTurma=$3 WHERE id=$4";
-        $con = getConexao();
+                codTurma=$3, nota=$4 WHERE codAluno=$5";
+        $con = $this->getConexao();
         $res = pg_query_params($con, $sql, $vetor);
         pg_close($con);
 
     }
 
-    public function delete(Aluno $aluno) {
+    public function delete($aluno) {
         $vetor = array($aluno->getId());
-        $sql = "DELETE Aluno WHERE id=$1";
-        $con = getConexao();
+        $sql = "DELETE FROM Aluno WHERE codAluno=$1";
+        $con = $this->getConexao();
         $res = pg_query_params($con, $sql, $vetor);
         pg_close($con);
     }
@@ -35,16 +36,16 @@ class AlunoDao extends Dao {
     public function list(int $limit, int $offset) {
         $vetor = array($limit, $offset);
         $sql = "SELECT * FROM Aluno LIMIT $1 OFFSET $2";
-        $con = getConexao();
+        $con = $this->getConexao();
         $res = pg_query_params($con, $sql, $vetor);
         $alunos = array();
         while ($assoc = pg_fetch_assoc($res)) {
             $aluno = new Aluno($assoc['nome'], $assoc['email']);
             $aluno->setNota($assoc['nota']);
             $turmaDao = new TurmaDao();
-            $turma = $turmaDao->find($assoc['codTurma']);
+            $turma = $turmaDao->find($assoc['codturma']);
             $aluno->setTurma($turma);
-            $aluno->setId($assoc['codAluno']);
+            $aluno->setId($assoc['codaluno']);
             array_push($alunos, $aluno);
         }
         pg_close($con);
@@ -53,16 +54,16 @@ class AlunoDao extends Dao {
 
     public function find(int $id) {
         $vetor = array($id);
-        $sql = "SELECT * FROM Aluno WHERE id=$1";
-        $con = getConexao();
+        $sql = "SELECT * FROM Aluno WHERE codaluno=$1";
+        $con = $this->getConexao();
         $res = pg_query_params($con, $sql, $vetor);
         $assoc = pg_fetch_assoc($res);
         $aluno = new Aluno($assoc['nome'], $assoc['email']);
         $aluno->setNota($assoc['nota']);
         $turmaDao = new TurmaDao();
-        $turma = $turmaDao->find($assoc['codTurma']);
+        $turma = $turmaDao->find($assoc['codturma']);
         $aluno->setTurma($turma);
-        $aluno->setId($assoc['codAluno']);
+        $aluno->setId($assoc['codaluno']);
         pg_close($con);
         return $aluno;
     }

@@ -1,4 +1,4 @@
-﻿CREATE DATABASE clasroombd;
+﻿CREATE DATABASE classroombd;
 
 CREATE TABLE Atividade (
     nome varchar(150) NOT NULL,

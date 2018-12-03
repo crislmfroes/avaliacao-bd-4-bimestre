@@ -1,6 +1,5 @@
 <?php
-include_once('aluno.php');
-class Aluno {
+class Turma {
     private $nome;
     private $id;
     private $ano;

@@ -1,6 +1,6 @@
 <?php
 abstract class DAO {
-    private function getConexao() {
+    protected function getConexao() {
         $scon = "host=localhost port=5432 dbname=classroombd user=postgres password=postgres";
         $con = pg_connect($scon);
         if(!$con){
@@ -13,7 +13,7 @@ abstract class DAO {
     abstract protected function insert($object);
     abstract protected function delete($object);
     abstract protected function update($object);
-    abstract protected function list($limit, $offset);
-    abstract protected function find($id);
+    abstract protected function list(int $limit, int $offset);
+    abstract protected function find(int $id);
 }
 ?>
