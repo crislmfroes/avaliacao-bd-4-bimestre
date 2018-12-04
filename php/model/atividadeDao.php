@@ -56,6 +56,18 @@ class AtividadeDao extends Dao {
     }
 
     public function find(int $id) {
+        $vetor = array($id);
+        $sql = "SELECT * FROM Atividade WHERE codatividade=$1";
+        $con = $this->getConexao();
+        $res = pg_query_params($con, $sql, $vetor);
+        $assoc = pg_fetch_assoc($res);
+        $atividade = new Atividade($assoc['nome'], new DateTime($assoc['dataentrega']), $assoc['peso'],
+            $assoc['disciplina'], $assoc['descricao']);
+
+        $atividade->setId($assoc['codatividade']);
+
+        pg_close($con);
+        return $atividade;
 
     }
 }

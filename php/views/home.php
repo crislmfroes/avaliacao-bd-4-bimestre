@@ -28,7 +28,7 @@
                     <a class="nav-link" href="criarAtividade.html">Criar Atividade</a>
                   </li>
                   <li class="nav-item active">
-                      <a class="nav-link" href="listaAtividades.html">Lista de Atividades</a>
+                      <a class="nav-link" href="listaAtividades.php">Lista de Atividades</a>
                     </li>
                 </ul>
         </nav>
@@ -70,16 +70,24 @@
                   </tr>
               </thead>
               <tbody>
+             <?php
+			include_once('../model/turmaDao.php');
+            include_once('../model/turma.php');
+			$turdao=new turmaDao();
+			$turma=$turdao->list(1000,0);
+			//var_dump($turma);
+            foreach($turma as $t){ ?>
+                
                   <tr>
-                      <th scope="row">Turma teste</th>
-                      <td> </td>
+                      <th scope="row"><?php echo $t->getNome();?></th>
+                      <td><?php echo $t->getAno();?></td>
                       <td><a href="alteraTurma.html" class="btn btn-light">Altera</a>
                           <a href="#" class="btn btn-light">Exclui</a>
                           <a href="listaAlunos.html" class="btn btn-light">Ver Lista de Alunos</a>
                          
                        </td>
                   </tr>
-  
+                  <?php } ?>
               </tbody>
           </table>
 

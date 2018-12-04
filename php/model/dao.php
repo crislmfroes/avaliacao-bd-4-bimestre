@@ -14,6 +14,5 @@ abstract class DAO {
     abstract protected function delete($object);
     abstract protected function update($object);
     abstract protected function list(int $limit, int $offset);
-    abstract protected function find(int $id);
 }
 ?>

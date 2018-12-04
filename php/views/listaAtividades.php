@@ -59,8 +59,8 @@
             </thead>
             <tbody>
 			<?php
-			include_once('atividadeDao.php');
-			include_once('atividade.php');
+			include_once('../model/atividadeDao.php');
+            include_once('../model/atividade.php');
 			$atdao=new atividadeDao();
 			$atividade=$atdao->list(1000,0);
 			//var_dump($atividade);

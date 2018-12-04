@@ -9,7 +9,7 @@ include_once('../views/criarTurma.html');
 
 $t=new Turma($_POST['nomeTurma'],$_POST['anoTurma']);
 
-print_r($t);
+//print_r($t);
 
 $tdao=new turmaDao();
 $tdao->insert($t);
