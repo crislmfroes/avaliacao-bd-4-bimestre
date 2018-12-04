@@ -28,7 +28,7 @@
                     <a class="nav-link" href="criarAtividade.html">Criar Atividade</a>
                   </li>
                   <li class="nav-item active">
-                      <a class="nav-link" href="listaAtividades.php">Lista de Atividades</a>
+                      <a class="nav-link" href="listaAtividades.html">Lista de Atividades</a>
                     </li>
                 </ul>
         </nav>
@@ -81,8 +81,20 @@
                   <tr>
                       <th scope="row"><?php echo $t->getNome();?></th>
                       <td><?php echo $t->getAno();?></td>
-                      <td><a href="alteraTurma.html" class="btn btn-light">Altera</a>
-                          <a href="#" class="btn btn-light">Exclui</a>
+                      <td>
+
+                      
+
+                    <form method="POST" action="../views/alteraTurma.php">
+                            <input type="text" name="codigo" value="<?php echo $t->getId()?>" style="display: none;">
+                            <button type="submit" class="btn btn-light">Editar Turma</button>
+                            <input type="text" name="nomeTurma" value="<?php echo $t->getNome()?>" style="display: none;">	
+  						    <input type="text" name="anoTurma" value="<?php echo $t->getAno()?>" style="display: none;">
+                    </form>
+                          <form action="../controllers/excluirTurma.php" method="POST">
+  						    <input type="text" name="excluirTurma" value="<?php echo $t->getId()?>" style="display: none;">
+  							<button type="submit" class="btn btn-light">Excluir Turma</button>
+  					    </form>
                           <a href="listaAlunos.html" class="btn btn-light">Ver Lista de Alunos</a>
                          
                        </td>
