@@ -65,14 +65,23 @@
                 </div>  
                  
 
-<!--                <div class="form-group">
-                        <div class="col-md-6 offset-md-3">
-                            <label> Alunos: </label>  
-                            <input type="text" name="aluno" class="form-control" placeholder="aluno">
+                <div class="form-group">
+                        <div class="col-md-6 offset-md-3 aluno-form">
+                            <label> Aluno: </label>
+                            <input type="text" name="aluno[]" class="form-control" placeholder="aluno">
+                            <input type="text" name="email[]" class="form-control" placeholder="email">
                             <input type="button" value="Adicionar Aluno" class="btn btn-outline-secondary" name="">
                         </div>
-                </div>  -->
-        
+                </div>
+
+ <!--               <div class="form-group">
+                        <div class="col-md-6 offset-md-3 aluno-form">
+                            <label> Aluno: </label>
+                            <input type="text" name="aluno" class="form-control" placeholder="aluno">
+                            <input type="text" name="email" class="form-control" placeholder="email">
+                        </div>
+                </div>
+-->        
                 <div class="form-group">
                     <div class="col-md-6 offset-md-3">
                         <input type="submit" value="Criar Turma!" class="btn btn-primary" name="">
@@ -91,6 +100,8 @@
         crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+    <script src="js/adicionarAluno.js"></script>
+    
 </body>
 
 </html>
