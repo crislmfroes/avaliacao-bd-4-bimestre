@@ -1,6 +1,6 @@
 <?php
 include_once('dao.php');
-include_once('aluno.php');
+//include_once('aluno.php');
 include_once('atividade.php');
 class AtividadeDao extends Dao {
     public function insert($atividade) {
@@ -35,6 +35,8 @@ class AtividadeDao extends Dao {
         pg_close($con);
     }
 
+
+		
     public function list(int $limit, int $offset) {
         $vetor = array($limit, $offset);
         $sql = "SELECT * FROM Atividade LIMIT $1 OFFSET $2";
@@ -42,12 +44,8 @@ class AtividadeDao extends Dao {
         $res = pg_query_params($con, $sql, $vetor);
         $atividades = array();
 
-        $m->setId(intval($linha['id']));
-			
-			array_push($listMetas,$m);
-
         while ($assoc = pg_fetch_assoc($res)) {
-            $atividades = new Atividade($assoc['nome'], $assoc['dataEntrega'], $assoc['peso'], 
+            $atividade = new Atividade($assoc['nome'], new DateTime($assoc['dataEntrega']), $assoc['peso'], 
             $assoc['disciplina'], $assoc['descricao']);
             
             $atividade->setId($assoc['codatividade']);
