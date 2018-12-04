@@ -37,7 +37,7 @@ class Aluno {
     public function getNota() {
         return $this->nota;
     }
-    public function setNota(float $nota) {
+    public function setNota(float $nota=0) {
         $this->nota = $nota;
     }
 }

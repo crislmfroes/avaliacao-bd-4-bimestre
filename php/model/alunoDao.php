@@ -1,6 +1,7 @@
 <?php
 include_once('dao.php');
 include_once('aluno.php');
+include_once('turmaDao.php');
 class AlunoDao extends Dao {
     public function insert($aluno) {
         $vetor = array($aluno->getNome(), $aluno->getEmail(),

@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
     <link rel="stylesheet" href="estilo.css">
-    <title>Lista de Atividades</title>
+    <title>Lista de Alunos</title>
 </head>
 
 <body>
@@ -36,7 +36,7 @@
 
     <br>
     <br>
-    <h1 class="centro">Lista de Atividades</h1>
+    <h1 class="centro">Lista de Entregas</h1>
     <br>
     <br>
     <br>
@@ -46,42 +46,43 @@
 
     <div class="container">
 
-       <table class="table">
-            <thead class="thead-dark">
-                <tr>
-                    <th scope="col">Título</th>
-                    <th scope="col">Descricao</th>
-                    <th scope="col">Peso</th>
-                    <th scope="col">Data Entrega</th>
-                    <th scope="col"> </th>
-                    
-                </tr>
-            </thead>
-            <tbody>
-			<?php
-			include_once('../model/atividadeDao.php');
-            include_once('../model/atividade.php');
-			$atdao=new atividadeDao();
-			$atividade=$atdao->list(1000,0);
-			//var_dump($atividade);
-			foreach($atividade as $a){ ?>
-			
-                <tr>
-                    <th scope="row"><?php echo $a->getNome();?></th>
-                    <td><?php echo $a->getDescricao();?> </td>
-                    <td> <?php echo $a->getPeso();?></td>
-                    <td> <?php echo $a->getDataEntrega()->format('Y/m/d');?></td>
-                    <td><a href="alteraAtividade.html" class="btn btn-light">Editar</a>
-                        <button type="button" class="btn btn-light">Exclui</button> 
-                        <a href="inserirNota.html" class="btn btn-light btn-inserir-atividade">Inserir Nota dos ALunos</a>
-                    </td>
-                </tr>
-              <?php } ?>
+        <form action="../controllers/inserirEntrega.php" method="get">
 
-            </tbody>
-        </table>
+        <select name="aluno" class="custom-select" id="inputGroupSelect02">
+            <option selected>VER ALUNOS</option>
+            <?php
+            include_once('../model/alunoDao.php');
+            $dao = new AlunoDao();
+            $alunos = $dao->list(100, 0);
+            foreach ($alunos as $aluno) {
+                $id = $aluno->getId();
+                $nome = $aluno->getNome();
+                echo "<option value=\"$id\">$nome</option>";
+            }
+            ?>
+        </select>
+<br>
+<br>
+<br>
+        <div class="form-group">
+            <div class="col-md-6 offset-md-3">
+                <label>Inserir nota da atividade</label>
+                <input type="number" name="nota" class="form-control " placeholder="Digite a nota">
+        </div>
+        <input type="hidden" value="<?php echo $_GET['atividade'];?>"/>
+
 
     </div>
+
+    <div class="form-group">
+        <div class="col-md-6 offset-md-3">
+            <input type="submit" value="Inserir nota" class="btn btn-danger" name="">
+        </div>
+
+    </form>
+    </div>
+
+
 
 
     <!-- Optional JavaScript -->
