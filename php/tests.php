@@ -32,4 +32,5 @@ $entregaDao->insert($entrega);
 $entrega->setNota(5);
 $entregaDao->update($entrega);
 var_dump($entregaDao->list(100, 0));
+$t = new Turma();
 ?>

@@ -3,7 +3,7 @@ class Turma {
     private $nome;
     private $id;
     private $ano;
-    public function Turma(string $nome, int $ano) {
+    public function Turma(string $nome="", int $ano = 0) {
         $this->nome = $nome;
         $this->ano = $ano;
     }
