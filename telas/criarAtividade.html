@@ -48,7 +48,7 @@
 
      <div class="container ">
 
-            <form> 
+            <form  action="inserirAtividade.php" method="POST"> 
         
                 <div class="form-group">
                     <div class="   col-md-6 offset-md-3">
@@ -60,7 +60,7 @@
                 <div class="form-group">
                     <div class="col-md-6 offset-md-3">
                         <label> Descrição: </label> 
-                        <textarea class="form-control" name="" id="" cols="10" rows="5">
+                        <textarea class="form-control" name="descricaoAtividade" id="" cols="10" rows="5">
                          </textarea> 
                     </div>
                 </div>  
@@ -72,8 +72,15 @@
                             <input type="number" name="peso" class="form-control" placeholder="peso">
                         </div>
                  </div>
+		
+		<div class="form-group">
+                    <div class="   col-md-6 offset-md-3">
+                        <label >Disciplina:</label>
+                        <input type="text" name="disciplina" class="form-control " placeholder="Digite a disciplina">    
+                    </div>
+                </div>
 
-                 <div class="form-group">
+                 <!--<div class="form-group">
                         <div class="col-md-6 offset-md-3">
                             <label> Quais turmas podem fazer esta atividade? </label>  
                             <select class="custom-select" id="inputGroupSelect01">
@@ -82,7 +89,7 @@
                                     <option value="2">Turma Y</option>
                             </select>
                         </div>
-                 </div>
+                 </div>-->
 
                  
                 <div class="form-group">
@@ -95,7 +102,7 @@
                  
         
                 <div class="form-group">
-                    <div class="col-md-6 offset-md-3">
+                   <div class="col-md-6 offset-md-3">
                         <input type="submit" value="Criar Atividade!" class="btn btn-primary" name="">
                 </div>
                 </div>

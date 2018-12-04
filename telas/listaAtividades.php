@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
     <link rel="stylesheet" href="estilo.css">
-    <title>Criar Turma</title>
+    <title>Lista de Atividades</title>
 </head>
 
 <body>
@@ -36,51 +36,52 @@
 
     <br>
     <br>
-    <h1 class="centro">Criar Turma</h1>
-    <br>
-    <h3 class="centro">Crie turmas e exerça funções no Virtual Class</h3>
+    <h1 class="centro">Lista de Atividades</h1>
     <br>
     <br>
-
-   
-  
+    <br>
 
 
-     <div class="container ">
 
-            <form action="inserirTurma.php" method="POST"> 
-        
-                <div class="form-group">
-                    <div class="col-md-6 offset-md-3">
-                        <label >Nome da Turma:</label>
-                        <input type="text" name="nomeTurma" class="form-control " placeholder="Digite o nome da sua turma">    
-                    </div>
-                </div>
-        
-                <div class="form-group">
-                    <div class="col-md-6 offset-md-3">
-                        <label> Ano: </label>  
-                        <input type="number" name="anoTurma" class="form-control" placeholder="ano">
-                    </div>
-                </div>  
-                 
 
-<!--                <div class="form-group">
-                        <div class="col-md-6 offset-md-3">
-                            <label> Alunos: </label>  
-                            <input type="text" name="aluno" class="form-control" placeholder="aluno">
-                            <input type="button" value="Adicionar Aluno" class="btn btn-outline-secondary" name="">
-                        </div>
-                </div>  -->
-        
-                <div class="form-group">
-                    <div class="col-md-6 offset-md-3">
-                        <input type="submit" value="Criar Turma!" class="btn btn-primary" name="">
-                </div>
-                </div>
-            </form> 
-        </div>
+    <div class="container">
 
+       <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Título</th>
+                    <th scope="col">Descricao</th>
+                    <th scope="col">Peso</th>
+                    <th scope="col">Data Entrega</th>
+                    <th scope="col"> </th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+			<?php
+			include_once('atividadeDao.php');
+			include_once('atividade.php');
+			$atdao=new atividadeDao();
+			$atividade=$atdao->list(1000,0);
+			//var_dump($atividade);
+			foreach($atividade as $a){ ?>
+			
+                <tr>
+                    <th scope="row"><?php echo $a->getNome();?></th>
+                    <td><?php echo $a->getDescricao();?> </td>
+                    <td> <?php echo $a->getPeso();?></td>
+                    <td> <?php echo $a->getDataEntrega()->format('Y/m/d');?></td>
+                    <td><a href="alteraAtividade.html" class="btn btn-light">Editar</a>
+                        <button type="button" class="btn btn-light">Exclui</button> 
+                        <a href="inserirNota.html" class="btn btn-light">Inserir Nota dos ALunos</a>
+                    </td>
+                </tr>
+              <?php } ?>
+
+            </tbody>
+        </table>
+
+    </div>
 
 
     <!-- Optional JavaScript -->
