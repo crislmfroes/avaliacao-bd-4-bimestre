@@ -19,16 +19,16 @@
         <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
                 <ul class="navbar-nav">
                   <li class="nav-item active">
-                    <a class="navbar-brand" href="home.php">Inicio</a>
+                    <a class="navbar-brand" href="home.html">Inicio</a>
                   </li>
                   <li class="nav-item active">
-                    <a class="nav-link" href="criarTurma.php">Criar Turma</a>
+                    <a class="nav-link" href="criarTurma.html">Criar Turma</a>
                   </li>
                   <li class="nav-item active">
-                    <a class="nav-link" href="criarAtividade.php">Criar Atividade</a>
+                    <a class="nav-link" href="criarAtividade.html">Criar Atividade</a>
                   </li>
                   <li class="nav-item active">
-                      <a class="nav-link" href="listaAtividades.php">Lista de Atividades</a>
+                      <a class="nav-link" href="listaAtividades.html">Lista de Atividades</a>
                     </li>
                 </ul>
         </nav>
@@ -52,6 +52,7 @@
                     <th scope="col">Título</th>
                     <th scope="col">Descricao</th>
                     <th scope="col">Peso</th>
+                    <th scope="col">Disciplina</th>
                     <th scope="col">Data Entrega</th>
                     <th scope="col"> </th>
                     
@@ -65,33 +66,40 @@
 			$atividade=$atdao->list(1000,0);
 			//var_dump($atividade);
 			foreach($atividade as $a){ ?>
-			<!--
+			
                 <tr>
-                    <th scope="row"></th>
-                    
-                    <td><a href="alteraAtividade.html" class="btn btn-light">Editar</a>
-                        <button type="button" class="btn btn-light">Exclui</button> 
-                        <a href="inserirNota.html" class="btn btn-light btn-inserir-atividade">Inserir Nota dos ALunos</a>
-                    </td>
-                </tr> -->
-                <tr>
-                      <th scope="row"><?php echo $a->getNome();?></th>
-                      <td><?php echo $a->getDescricao();?> </td>
+                    <th scope="row"><?php echo $a->getNome();?></th>
+                    <td><?php echo $a->getDescricao();?> </td>
                     <td> <?php echo $a->getPeso();?></td>
+                    <td> <?php echo $a->getDisciplina();?></td>
                     <td> <?php echo $a->getDataEntrega()->format('Y/m/d');?></td>
-
-                      
                     <td>
-                        <form method="get" action="../views/inserirNota.php">
-                                <input type="number" name="codigo" value=<?php echo $a->getId();?> style="display: none;">
-                                <button type="submit" class="btn btn-light">Inserir Notas de Alunos</button>
-                        </form>
+                    
+                    <form method="POST" action="../views/alteraAtividade.php">
+                            <input type="hidden" name="codigoAtividade" value="<?php echo $a->getId()?>">
+                            <button type="submit" class="btn btn-light">Editar Atividade</button>
+                            <input type="text" name="nomeAtividade" value="<?php echo $a->getNome();?>" style="display: none;">
+                            <input type="text" name="descricao" value="<?php echo $a->getDescricao();?>" style="display: none;">	
+                            <input type="text" name="peso" value="<?php echo $a->getPeso();?>" style="display: none;">
+                            <input type="text" name="disciplina" value="<?php echo $a->getDisciplina();?>" style="display: none;">
+                            <input type="text" name="dataEntrega" value="<?php echo $a->getDataEntrega()->format('Y/m/d');?>" style="display: none;">
+                    </form>
+
+                        			
+                    <form method="POST" action="../controllers/excluirAtividade.php">
+                         <input type="hidden" name="codAtividade" value="<?php echo $a->getId()?>">
+                         <button type="submit" class="btn btn-light">Excluir</button>
+                    </form>
+
+                        <!--<form action="../controllers/excluirAtividade.php" method="POST">
+  						    <input type="text" name="excluirAtividade" value="<?php //echo $a->getId()?>" style="display: none;">
+  							<button type="submit" class="btn btn-light">Excluir</button>
+                        
+                          </form>-->
+                     
+                        <!-- <a href="inserirNota.html" class="btn btn-light btn-inserir-atividade">Inserir Nota dos ALunos</a>-->
                     </td>
-                         <!-- <form action="../controllers/excluirTurma.php" method="POST">
-  						    <input type="text" name="excluirTurma" value= style="display: none;">
-  							<button type="submit" class="btn btn-light">Excluir Turma</button>
-  					    </form>
-            -->
+                </tr>
               <?php } ?>
 
             </tbody>
