@@ -2,13 +2,13 @@
 
 include_once('../model/atividadeDao.php');
 include_once('../model/atividade.php');
-include_once('../views/alteraAtividade.php');
+//include_once('../views/alteraAtividade.php');
 
 
 $a = new Atividade($_POST['nomeAtividade'],new DateTime($_POST['dataEntrega']),
 $_POST['peso'],$_POST['descricao'],$_POST['disciplina']);
 
-$cod = $_POST['codigoAtividade'];
+$cod = (int) $_POST['codigoAtividade'];
 $a->setId($cod);
 
 

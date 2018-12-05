@@ -6,7 +6,7 @@ class Entrega {
     private $atividade;
     private $nota;
 
-    public function Entrega(float $nota) {
+    public function Entrega($nota) {
         $this->nota = $nota;
     }
 
@@ -23,7 +23,7 @@ class Entrega {
      *
      * @return  self
      */ 
-    public function setAluno(Aluno $aluno)
+    public function setAluno($aluno)
     {
         $this->aluno = $aluno;
 
@@ -43,7 +43,7 @@ class Entrega {
      *
      * @return  self
      */ 
-    public function setAtividade(Atividade $atividade)
+    public function setAtividade($atividade)
     {
         $this->atividade = $atividade;
 
@@ -63,7 +63,7 @@ class Entrega {
      *
      * @return  self
      */ 
-    public function setNota(float $nota)
+    public function setNota($nota)
     {
         $this->nota = $nota;
 

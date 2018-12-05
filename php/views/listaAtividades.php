@@ -77,14 +77,14 @@
                     <td> <?php echo $a->getDataEntrega()->format('Y/m/d');?></td>
                     <td>
                     
-                    <form method="POST" action="../views/alteraAtividade.php">
-                            <input type="hidden" name="codigoAtividade" value="<?php echo $a->getId()?>">
-                            <button type="submit" class="btn btn-light">Editar Atividade</button>
+                    <form method="get" action="../views/alteraAtividade.php">
+                            <input type="number" name="codigoAtividade" value=<?php echo $a->getId();?> >
                             <input type="text" name="nomeAtividade" value="<?php echo $a->getNome();?>" style="display: none;">
                             <input type="text" name="descricao" value="<?php echo $a->getDescricao();?>" style="display: none;">	
                             <input type="text" name="peso" value="<?php echo $a->getPeso();?>" style="display: none;">
                             <input type="text" name="disciplina" value="<?php echo $a->getDisciplina();?>" style="display: none;">
                             <input type="text" name="dataEntrega" value="<?php echo $a->getDataEntrega()->format('Y/m/d');?>" style="display: none;">
+                            <button type="submit" class="btn btn-light">Editar Atividade</button>
                     </form>
                     </td>
                      <td>   			

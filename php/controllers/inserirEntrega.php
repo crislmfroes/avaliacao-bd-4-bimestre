@@ -10,13 +10,11 @@ $entrega->setAtividade($atividadeDao->find($_GET['atividade']));
 $entregaDao = new EntregaDao();
 $entregas = $entregaDao->list(null, null);
 $nota = 0;
-$count = 0;
 $entregaDao->insert($entrega);
 foreach ($entregas as $entrega) {
     $aluno = $entrega->getAluno();
     if ($aluno->getId() == $_GET['aluno']) {
-        $count++;
-        $nota += $entrega->getNota();
+        $nota += $entrega->getNota() / (float) $entrega->getAtividade()->getPeso();
     }
 }
 if ($count) {

@@ -11,7 +11,7 @@ class Atividade {
     private $peso;
     private $descricao;
     private $disciplina;
-    public function Atividade(string $nome, DateTime $dataEntrega, float $peso, string $descricao, string $disciplina) {
+    public function Atividade($nome, $dataEntrega, $peso, $descricao, $disciplina) {
         $this->nome = $nome;
         $this->dataEntrega = $dataEntrega;
         $this->peso = $peso;
@@ -26,7 +26,7 @@ class Atividade {
     }
 
 
-    public function setDisciplina(string $disciplina)
+    public function setDisciplina($disciplina)
     {
         $this->disciplina = $disciplina;
 
@@ -40,7 +40,7 @@ class Atividade {
     }
 
 	
-    public function setDescricao(string $descricao)
+    public function setDescricao($descricao)
     {
         $this->descricao = $descricao;
 
@@ -54,7 +54,7 @@ class Atividade {
     }
 
     
-    public function setPeso(float $peso)
+    public function setPeso($peso)
     {
         $this->peso = $peso;
 
@@ -67,7 +67,7 @@ class Atividade {
         return $this->dataEntrega;
     }
 
-    public function setDataEntrega(DateTime $dataEntrega)
+    public function setDataEntrega($dataEntrega)
     {
         $this->dataEntrega = $dataEntrega;
 

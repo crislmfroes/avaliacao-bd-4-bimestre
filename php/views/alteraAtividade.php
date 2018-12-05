@@ -50,18 +50,18 @@
 
             <form method="POST" action="../controllers/editaAtividade.php"> 
         
-            <input type="text" name="codigoAtividade" value="<?php echo $_POST['codigoAtividade'] ?>" style="display: none">
+            <input type="text" name="codigoAtividade" value="<?php echo $_GET['codigoAtividade']; ?>" style="display: none">
                 <div class="form-group">
-                    <div class="   col-md-6 offset-md-3">
+                    <div class="col-md-6 offset-md-3">
                         <label >Novo Título:</label>
-                        <input type="text" name="nomeAtividade" class="form-control" value= "<?php echo $_POST['nomeAtividade'] ?>">    
+                        <input type="text" name="nomeAtividade" class="form-control" value= "<?php echo $_GET['nomeAtividade']; ?>">    
                     </div>
                 </div>
         
                 <div class="form-group">
                     <div class="col-md-6 offset-md-3">
                         <label> Nova Descrição: </label> 
-                        <textarea class="form-control" name="descricao" cols="10" rows="5" value= "<?php echo $_POST['descricao'] ?>">
+                        <textarea class="form-control" name="descricao" cols="10" rows="5" value= "<?php echo $_GET['descricao']; ?>">
                          </textarea> 
                     </div>
                 </div>  
