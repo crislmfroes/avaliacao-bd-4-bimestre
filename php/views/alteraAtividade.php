@@ -19,16 +19,16 @@
         <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
                 <ul class="navbar-nav">
                   <li class="nav-item active">
-                    <a class="navbar-brand" href="home.php">Inicio</a>
+                    <a class="navbar-brand" href="home.html">Inicio</a>
                   </li>
                   <li class="nav-item active">
-                    <a class="nav-link" href="criarTurma.php">Criar Turma</a>
+                    <a class="nav-link" href="criarTurma.html">Criar Turma</a>
                   </li>
                   <li class="nav-item active">
-                    <a class="nav-link" href="criarAtividade.php">Criar Atividade</a>
+                    <a class="nav-link" href="criarAtividade.html">Criar Atividade</a>
                   </li>
                   <li class="nav-item active">
-                      <a class="nav-link" href="listaAtividades.php">Lista de Atividades</a>
+                      <a class="nav-link" href="listaAtividades.html">Lista de Atividades</a>
                     </li>
                 </ul>
         </nav>
@@ -48,19 +48,20 @@
 
      <div class="container ">
 
-            <form> 
+            <form method="POST" action="../controllers/editaAtividade.php"> 
         
+            <input type="text" name="codigoAtividade" value="<?php echo $_POST['codigoAtividade'] ?>" style="display: none">
                 <div class="form-group">
                     <div class="   col-md-6 offset-md-3">
                         <label >Novo Título:</label>
-                        <input type="text" name="nomeAtividade" class="form-control " placeholder="Digite o título da sua atividade">    
+                        <input type="text" name="nomeAtividade" class="form-control" value= "<?php echo $_POST['nomeAtividade'] ?>">    
                     </div>
                 </div>
         
                 <div class="form-group">
                     <div class="col-md-6 offset-md-3">
                         <label> Nova Descrição: </label> 
-                        <textarea class="form-control" name="" id="" cols="10" rows="5">
+                        <textarea class="form-control" name="descricao" cols="10" rows="5" value= "<?php echo $_POST['descricao'] ?>">
                          </textarea> 
                     </div>
                 </div>  
@@ -69,28 +70,25 @@
                 <div class="form-group">
                         <div class="col-md-6 offset-md-3">
                             <label> Peso: </label>  
-                            <input type="number" name="peso" class="form-control" placeholder="peso">
+                            <input type="number" name="peso" class="form-control" value= "<?php echo $_POST['peso'] ?>">
                         </div>
                  </div>
 
-                 <div class="form-group">
-                        <div class="col-md-6 offset-md-3">
-                            <label> Quais turmas podem fazer esta atividade? </label>  
-                            <select class="custom-select" id="inputGroupSelect01">
-                                    <option selected>Ver</option>
-                                    <option value="1">Turma X</option>
-                                    <option value="2">Turma Y</option>
-                            </select>
-                        </div>
-                 </div>
 
                  
                 <div class="form-group">
                         <div class="col-md-6 offset-md-3">
                             <label> Data de Entrega: </label>  
-                            <input type="date" name="dataEntrega" class="form-control" placeholder="Data de Entrega">
+                            <input type="text" name="dataEntrega" class="form-control" value= "<?php echo $_POST['dataEntrega'] ?>">
                         </div>
-                    </div> 
+                 </div> 
+
+                 <div class="form-group">
+                    <div class="col-md-6 offset-md-3">
+                        <label >Disciplina</label>
+                        <input type="text" name="disciplina" class="form-control" value= "<?php echo $_POST['disciplina'] ?>">    
+                    </div>
+                </div>
                  
                  
         
