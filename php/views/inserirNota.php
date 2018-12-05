@@ -66,14 +66,14 @@
                 <label>Inserir nota da atividade</label>
                 <input type="number" name="nota" class="form-control " placeholder="Digite a nota">
         </div>
-        <input style="display: none;" name="atividade" value=<?php echo $_GET['codigo'];?> />
+        <input style="display: none;" name="atividade" value=<?php echo $_POST['codigoAtividade'];?> />
 
 
     </div>
 
     <div class="form-group">
         <div class="col-md-6 offset-md-3">
-            <input type="submit" value="Inserir nota" class="btn btn-danger submit-button" name="">
+            <input type="submit" value="Inserir nota" class="btn btn-danger submit-button" name="nota">
         </div>
 
     </form>

@@ -2,7 +2,7 @@
 include_once('../model/entregaDao.php');
 include_once('../model/alunoDao.php');
 include_once('../model/atividadeDao.php');
-$entrega = new Entrega($_GET['nota']);
+$entrega = new Entrega((float)$_GET['nota']);
 $alunoDao = new AlunoDao();
 $entrega->setAluno($alunoDao->find($_GET['aluno']));
 $atividadeDao = new AtividadeDao();

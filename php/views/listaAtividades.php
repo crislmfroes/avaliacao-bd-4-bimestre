@@ -19,16 +19,16 @@
         <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
                 <ul class="navbar-nav">
                   <li class="nav-item active">
-                    <a class="navbar-brand" href="home.html">Inicio</a>
+                    <a class="navbar-brand" href="home.php">Inicio</a>
                   </li>
                   <li class="nav-item active">
-                    <a class="nav-link" href="criarTurma.html">Criar Turma</a>
+                    <a class="nav-link" href="criarTurma.php">Criar Turma</a>
                   </li>
                   <li class="nav-item active">
-                    <a class="nav-link" href="criarAtividade.html">Criar Atividade</a>
+                    <a class="nav-link" href="criarAtividade.php">Criar Atividade</a>
                   </li>
                   <li class="nav-item active">
-                      <a class="nav-link" href="listaAtividades.html">Lista de Atividades</a>
+                      <a class="nav-link" href="listaAtividades.php">Lista de Atividades</a>
                     </li>
                 </ul>
         </nav>
@@ -54,6 +54,8 @@
                     <th scope="col">Peso</th>
                     <th scope="col">Disciplina</th>
                     <th scope="col">Data Entrega</th>
+                    <th scope="col"> </th>
+                    <th scope="col"> </th>
                     <th scope="col"> </th>
                     
                 </tr>
@@ -84,13 +86,23 @@
                             <input type="text" name="disciplina" value="<?php echo $a->getDisciplina();?>" style="display: none;">
                             <input type="text" name="dataEntrega" value="<?php echo $a->getDataEntrega()->format('Y/m/d');?>" style="display: none;">
                     </form>
-
-                        			
+                    </td>
+                     <td>   			
                     <form method="POST" action="../controllers/excluirAtividade.php">
                          <input type="hidden" name="codAtividade" value="<?php echo $a->getId()?>">
                          <button type="submit" class="btn btn-light">Excluir</button>
                     </form>
-
+                    </td>
+                    <td>
+                        <form method="POST" action="../views/inserirNota.php">
+                            <input type="hidden" name="codigoAtividade" value="<?php echo $a->getId()?>">
+                            <button type="submit" class="btn btn-light">Inserir notas de alunos</button>
+                            <input type="text" name="nomeAtividade" value="<?php echo $a->getNome();?>" style="display: none;">
+                            <input type="text" name="descricao" value="<?php echo $a->getDescricao();?>" style="display: none;">	
+                            <input type="text" name="peso" value="<?php echo $a->getPeso();?>" style="display: none;">
+                            <input type="text" name="disciplina" value="<?php echo $a->getDisciplina();?>" style="display: none;">
+                            <input type="text" name="dataEntrega" value="<?php echo $a->getDataEntrega()->format('Y/m/d');?>" style="display: none;">
+                        </form>
                         <!--<form action="../controllers/excluirAtividade.php" method="POST">
   						    <input type="text" name="excluirAtividade" value="<?php //echo $a->getId()?>" style="display: none;">
   							<button type="submit" class="btn btn-light">Excluir</button>
