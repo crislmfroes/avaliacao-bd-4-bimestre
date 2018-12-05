@@ -72,14 +72,14 @@
                     <td><?php echo $aluno->getNota();?></td>
                     <td>
                         <form action="alteraAluno.php" method="get">
-                            <input name="codigoAluno" type="number" value=<?php echo $aluno->getId();?> />
+                            <input name="codigoAluno" type="hidden" value=<?php echo $aluno->getId();?> />
                             <button type="submit" class="btn btn-light">Alterar aluno</button>
                         </form>
                     </td>
                     <td>
-                        <form action="excluirAluno.php" method="get">
-                            <input name="codigoAluno" type="number" value=<?php echo $aluno->getId();?> style="display: none;"/>
-                            <btn type="submit" class="btn btn-light">Excluir</btn>
+                        <form action="../controllers/excluirAluno.php" method="get">
+                            <input name="codigoAluno" type="hidden" value=<?php echo $aluno->getId();?> style="display: block;"/>
+                            <button type="submit" class="btn btn-light">Excluir</button>
                         </form> 
                     </td>
                 </tr>

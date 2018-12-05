@@ -1,12 +1,11 @@
 <?php
 
-include_once('../model/AtividadeDao.php');
-include_once('../model/atividade.php');
+include_once('../model/atividadeDao.php');
 
 
 
 $cod = $_POST['codAtividade'];
-$adao = new atividadeDao();
+$adao = new AtividadeDao();
 $atividade=$adao->find(intval($cod));
 
 $adao->delete($atividade);

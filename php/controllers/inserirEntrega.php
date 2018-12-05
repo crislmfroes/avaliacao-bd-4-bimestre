@@ -8,19 +8,20 @@ $entrega->setAluno($alunoDao->find($_GET['aluno']));
 $atividadeDao = new AtividadeDao();
 $entrega->setAtividade($atividadeDao->find($_GET['atividade']));
 $entregaDao = new EntregaDao();
-$entregas = $entregaDao->list(null, null);
-$nota = 0;
-$entregaDao->insert($entrega);
-foreach ($entregas as $entrega) {
-    $aluno = $entrega->getAluno();
+$nota = $entrega->getNota();
+$entregas = $entregaDao->list(1000, 0);
+foreach ($entregas as $e) {
+    $aluno = $e->getAluno();
     if ($aluno->getId() == $_GET['aluno']) {
-        $nota += $entrega->getNota() / (float) $entrega->getAtividade()->getPeso();
+        $nota += $e->getNota() / $e->getAtividade()->getPeso();
     }
 }
-if ($count) {
-    $aluno->setNota($nota/$count);
-    $alunoDao->update($aluno);
-}
+
+$entregaDao->insert($entrega);
+$aluno->setNota($nota);
+$alunoDao->update($aluno);
+
+
 header('Location: ../views/home.php');
 
 ?>

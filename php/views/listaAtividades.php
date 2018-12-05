@@ -75,16 +75,32 @@
                     <td> <?php echo $a->getDataEntrega()->format('Y/m/d');?></td>
                     <td>
                     
-
-					
-	<a href="../controllers/inserirAtividade.php?cod=<?php echo $a->getId(); ?>" class="btn btn-light">
-          Editar</a>	
-
-                        			
-                    <form method="POST" action="../controllers/excluirAtividade.php">
-                         <input type="hidden" name="codAtividade" value="<?php echo $a->getId()?>">
-                         <button type="submit" class="btn btn-light">Excluir</button>
+                    <form method="POST" action="../views/alteraAtividade.php">
+                            <input type="hidden" name="codigoAtividade" value="<?php echo $a->getId()?>">
+                            <button type="submit" class="btn btn-light">Editar Atividade</button>
+                            <input type="text" name="nomeAtividade" value="<?php echo $a->getNome();?>" style="display: none;">
+                            <input type="text" name="descricao" value="<?php echo $a->getDescricao();?>" style="display: none;">	
+                            <input type="text" name="peso" value="<?php echo $a->getPeso();?>" style="display: none;">
+                            <input type="text" name="disciplina" value="<?php echo $a->getDisciplina();?>" style="display: none;">
+                            <input type="text" name="dataEntrega" value="<?php echo $a->getDataEntrega()->format('Y/m/d');?>" style="display: none;">
                     </form>
+                    </td>
+                    <td>
+                        <form method="POST" action="../controllers/excluirAtividade.php">
+                            <input type="hidden" name="codAtividade" value="<?php echo $a->getId()?>">
+                            <button type="submit" class="btn btn-light">Excluir</button>
+                        </form>
+                     <td> 
+                     <td>  			
+                        <form method="POST" action="../views/inserirNota.php">
+                                <input type="hidden" name="codigoAtividade" value="<?php echo $a->getId()?>">
+                                <button type="submit" class="btn btn-light">Inserir Notas de Alunos</button>
+                                <input type="text" name="nomeAtividade" value="<?php echo $a->getNome();?>" style="display: none;">
+                                <input type="text" name="descricao" value="<?php echo $a->getDescricao();?>" style="display: none;">	
+                                <input type="text" name="peso" value="<?php echo $a->getPeso();?>" style="display: none;">
+                                <input type="text" name="disciplina" value="<?php echo $a->getDisciplina();?>" style="display: none;">
+                                <input type="text" name="dataEntrega" value="<?php echo $a->getDataEntrega()->format('Y/m/d');?>" style="display: none;">
+                        </form>
 
                         <!--<form action="../controllers/excluirAtividade.php" method="POST">
   						    <input type="text" name="excluirAtividade" value="<?php //echo $a->getId()?>" style="display: none;">

@@ -6,20 +6,20 @@ class Aluno {
     private $email;
     private $turma;
     private $nota;
-    public function Aluno($nome, $email) {
+    public function Aluno(string $nome, string $email) {
         $this->nome = $nome;
         $this->email = $email;
     }
     public function getNome() {
         return $this->nome;
     }
-    public function setNome($nome) {
+    public function setNome(string $nome) {
         $this->nome = $nome;
     }
     public function getId() {
         return $this->id;
     }
-    public function setId($id) {
+    public function setId(int $id) {
         $this->id = $id;
     }
     public function getEmail() {
@@ -31,7 +31,7 @@ class Aluno {
     public function getTurma() {
         return $this->turma;
     }
-    public function setTurma($turma) {
+    public function setTurma(Turma $turma) {
         $this->turma = $turma;
     }
     public function getNota() {

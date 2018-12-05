@@ -1,4 +1,9 @@
 ﻿CREATE DATABASE classroombd;
+DROP TABLE IF EXISTS Atividade;
+DROP TABLE IF EXISTS Aluno;
+DROP TABLE IF EXISTS Turma;
+DROP TABLE IF EXISTS Entrega;
+
 
 CREATE TABLE Atividade (
     nome varchar(150) NOT NULL,
@@ -37,7 +42,7 @@ ALTER TABLE Aluno ADD CONSTRAINT FK_Aluno_1
     FOREIGN KEY (codTurma)
     REFERENCES Turma (codTurma)
     ON UPDATE CASCADE
-    ON DELETE SET NULL;
+    ON DELETE CASCADE;
  
 ALTER TABLE Entrega ADD CONSTRAINT FK_Entrega_0
     FOREIGN KEY (codAluno)

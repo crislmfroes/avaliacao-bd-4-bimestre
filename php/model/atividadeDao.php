@@ -17,7 +17,7 @@ class AtividadeDao extends Dao {
     }
 
     public function update($atividade) {
-        $vetor = array($atividade->getNome(), $atividade->getDataEntrega(),$atividade->getPeso(),
+        $vetor = array($atividade->getNome(), $atividade->getDataEntrega()->format('Y/m/d'),$atividade->getPeso(),
         $atividade->getDisciplina(), $atividade->getDescricao(), $atividade->getId());
         $sql = "UPDATE Atividade SET nome=$1, dataEntrega=$2,
                 peso=$3, disciplina=$4, descricao=$5 WHERE codAtividade=$5";
@@ -29,7 +29,7 @@ class AtividadeDao extends Dao {
 
     public function delete($atividade) {
         $vetor = array($atividade->getId());
-        $sql = "DELETE Atividade WHERE id=$1";
+        $sql = "DELETE FROM Atividade WHERE codatividade=$1";
         $con = $this->getConexao();
         $res = pg_query_params($con, $sql, $vetor);
         pg_close($con);
@@ -45,7 +45,7 @@ class AtividadeDao extends Dao {
         $atividades = array();
 
         while ($assoc = pg_fetch_assoc($res)) {
-            $atividade = new Atividade($assoc['nome'], new DateTime($assoc['dataEntrega']), $assoc['peso'], 
+            $atividade = new Atividade($assoc['nome'], new DateTime($assoc['dataentrega']), $assoc['peso'], 
             $assoc['disciplina'], $assoc['descricao']);
             
             $atividade->setId($assoc['codatividade']);
