@@ -21,6 +21,7 @@ $_POST['peso'],$_POST['disciplina'],$_POST['descricaoAtividade']);
 $adao= new atividadeDao();
 
 $adao->insert($a);
+header('Location: ../views/home.php');
 
 
 

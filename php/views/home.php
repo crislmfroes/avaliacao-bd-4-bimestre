@@ -19,16 +19,16 @@
         <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
                 <ul class="navbar-nav">
                   <li class="nav-item active">
-                    <a class="navbar-brand" href="home.html">Inicio</a>
+                    <a class="navbar-brand" href="home.php">Inicio</a>
                   </li>
                   <li class="nav-item active">
-                    <a class="nav-link" href="criarTurma.html">Criar Turma</a>
+                    <a class="nav-link" href="criarTurma.php">Criar Turma</a>
                   </li>
                   <li class="nav-item active">
-                    <a class="nav-link" href="criarAtividade.html">Criar Atividade</a>
+                    <a class="nav-link" href="criarAtividade.php">Criar Atividade</a>
                   </li>
                   <li class="nav-item active">
-                      <a class="nav-link" href="listaAtividades.html">Lista de Atividades</a>
+                      <a class="nav-link" href="listaAtividades.php">Lista de Atividades</a>
                     </li>
                 </ul>
         </nav>
@@ -47,8 +47,8 @@
           <h5 class="card-text">Explore o sistema, crie turmas, atividades e gerencie notas.</h5>
           <br>
           <br>
-          <a href="criarTurma.html" class="btn btn-primary">Criar Turma +</a>
-          <a href="criarAtividade.html" class="btn btn-primary">Criar Atividade +</a>
+          <a href="criarTurma.php" class="btn btn-primary">Criar Turma +</a>
+          <a href="criarAtividade.php" class="btn btn-primary">Criar Atividade +</a>
         </div>
       </div>
 
@@ -65,6 +65,8 @@
                   <tr>
                       <th scope="col">Nome</th>
                       <th scope="col">Ano</th>
+                      <th scope="col"> </th>
+                      <th scope="col"> </th>
                       <th scope="col"> </th>
                       
                   </tr>
@@ -91,11 +93,18 @@
                             <input type="text" name="nomeTurma" value="<?php echo $t->getNome()?>" style="display: none;">	
   						    <input type="text" name="anoTurma" value="<?php echo $t->getAno()?>" style="display: none;">
                     </form>
+                </td>
+                    <td>
                           <form action="../controllers/excluirTurma.php" method="POST">
   						    <input type="text" name="excluirTurma" value="<?php echo $t->getId()?>" style="display: none;">
   							<button type="submit" class="btn btn-light">Excluir Turma</button>
-  					    </form>
-                          <a href="listaAlunos.html" class="btn btn-light">Ver Lista de Alunos</a>
+                          </form>
+                        </td>
+                        <td>
+                            <form action="../views/listaAlunos.php" method="get">
+                                <input type="text" name="codigo" value="<?php echo $t->getId()?>" style="display: none;">
+                                <button class="btn btn-light">Ver Lista de Alunos</button>
+                            </form>
                          
                        </td>
                   </tr>

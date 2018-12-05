@@ -25,7 +25,7 @@ class Aluno {
     public function getEmail() {
         return $this->email;
     }
-    public function setEmail(string $email) {
+    public function setEmail($email) {
         $this->email = $email;
     }
     public function getTurma() {
@@ -37,7 +37,7 @@ class Aluno {
     public function getNota() {
         return $this->nota;
     }
-    public function setNota(float $nota=0) {
+    public function setNota($nota) {
         $this->nota = $nota;
     }
 }

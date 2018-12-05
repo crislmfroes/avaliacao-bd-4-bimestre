@@ -34,7 +34,7 @@ class AlunoDao extends Dao {
         pg_close($con);
     }
 
-    public function list(int $limit, int $offset) {
+    public function list($limit, $offset) {
         $vetor = array($limit, $offset);
         $sql = "SELECT * FROM Aluno LIMIT $1 OFFSET $2";
         $con = $this->getConexao();
@@ -42,7 +42,7 @@ class AlunoDao extends Dao {
         $alunos = array();
         while ($assoc = pg_fetch_assoc($res)) {
             $aluno = new Aluno($assoc['nome'], $assoc['email']);
-            $aluno->setNota($assoc['nota']);
+            $aluno->setNota((float) $assoc['nota']);
             $turmaDao = new TurmaDao();
             $turma = $turmaDao->find($assoc['codturma']);
             $aluno->setTurma($turma);
@@ -53,14 +53,14 @@ class AlunoDao extends Dao {
         return $alunos;
     }
 
-    public function find(int $id) {
+    public function find($id) {
         $vetor = array($id);
         $sql = "SELECT * FROM Aluno WHERE codaluno=$1";
         $con = $this->getConexao();
         $res = pg_query_params($con, $sql, $vetor);
         $assoc = pg_fetch_assoc($res);
         $aluno = new Aluno($assoc['nome'], $assoc['email']);
-        $aluno->setNota($assoc['nota']);
+        $aluno->setNota((float) $assoc['nota']);
         $turmaDao = new TurmaDao();
         $turma = $turmaDao->find($assoc['codturma']);
         $aluno->setTurma($turma);

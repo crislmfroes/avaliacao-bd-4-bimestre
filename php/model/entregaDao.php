@@ -34,7 +34,7 @@ class EntregaDao extends Dao
         pg_close($con);
     }
 
-    function list(int $limit, int $offset) {
+    function list($limit, $offset) {
         $vetor = array($limit, $offset);
         $sql = "SELECT * FROM Entrega LIMIT $1 OFFSET $2";
         $con = $this->getConexao();
@@ -53,7 +53,7 @@ class EntregaDao extends Dao
         return $entregas;
     }
 
-    public function find(int $idAluno, int $idAtividade)
+    public function find($idAluno, $idAtividade)
     {
         $vetor = array($idAluno, $idAtividade);
         $sql = "SELECT * FROM Entrega WHERE codaluno=$1 AND codatividade=$2";

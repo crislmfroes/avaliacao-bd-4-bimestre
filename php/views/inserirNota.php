@@ -19,16 +19,16 @@
         <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
                 <ul class="navbar-nav">
                   <li class="nav-item active">
-                    <a class="navbar-brand" href="home.html">Inicio</a>
+                    <a class="navbar-brand" href="home.php">Inicio</a>
                   </li>
                   <li class="nav-item active">
-                    <a class="nav-link" href="criarTurma.html">Criar Turma</a>
+                    <a class="nav-link" href="criarTurma.php">Criar Turma</a>
                   </li>
                   <li class="nav-item active">
-                    <a class="nav-link" href="criarAtividade.html">Criar Atividade</a>
+                    <a class="nav-link" href="criarAtividade.php">Criar Atividade</a>
                   </li>
                   <li class="nav-item active">
-                      <a class="nav-link" href="listaAtividades.html">Lista de Atividades</a>
+                      <a class="nav-link" href="listaAtividades.php">Lista de Atividades</a>
                     </li>
                 </ul>
         </nav>
@@ -49,7 +49,6 @@
         <form action="../controllers/inserirEntrega.php" method="get">
 
         <select name="aluno" class="custom-select" id="inputGroupSelect02">
-            <option selected>VER ALUNOS</option>
             <?php
             include_once('../model/alunoDao.php');
             $dao = new AlunoDao();
@@ -69,7 +68,7 @@
                 <label>Inserir nota da atividade</label>
                 <input type="number" name="nota" class="form-control " placeholder="Digite a nota">
         </div>
-        <input type="hidden" value="<?php echo $_GET['atividade'];?>"/>
+        <input style="display: none;" name="atividade" value=<?php echo $_GET['codigo'];?> />
 
 
     </div>

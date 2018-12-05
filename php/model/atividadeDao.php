@@ -37,7 +37,7 @@ class AtividadeDao extends Dao {
 
 
 		
-    public function list(int $limit, int $offset) {
+    public function list($limit, $offset) {
         $vetor = array($limit, $offset);
         $sql = "SELECT * FROM Atividade LIMIT $1 OFFSET $2";
         $con = $this->getConexao();
@@ -55,7 +55,7 @@ class AtividadeDao extends Dao {
         return $atividades;
     }
 
-    public function find(int $id) {
+    public function find($id) {
         $vetor = array($id);
         $sql = "SELECT * FROM Atividade WHERE codatividade=$1";
         $con = $this->getConexao();

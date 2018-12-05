@@ -12,6 +12,7 @@ $tdao = new turmaDao();
 //var_dump($t);
 $tdao->delete($t);
 //header('Location: home.php');
+header('Location: ../views/home.php');
 
 
 ?>

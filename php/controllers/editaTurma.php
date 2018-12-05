@@ -3,7 +3,7 @@
 
 include_once('../model/turmaDao.php');
 include_once('../model/turma.php');
-include_once('../views/alteraTurma.php');
+//include_once('../views/alteraTurma.php');
 
 
 $t = new Turma($_POST['nomeTurma'],$_POST['anoTurma']);
@@ -15,7 +15,7 @@ $tdao = new turmaDao();
 
 //var_dump($t);
 $tdao->update($t);
-//header('Location: home.php');
+header('Location: ../views/home.php');
 
 
 

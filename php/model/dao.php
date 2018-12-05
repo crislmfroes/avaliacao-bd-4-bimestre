@@ -13,6 +13,6 @@ abstract class DAO {
     abstract protected function insert($object);
     abstract protected function delete($object);
     abstract protected function update($object);
-    abstract protected function list(int $limit, int $offset);
+    abstract protected function list($limit, $offset);
 }
 ?>

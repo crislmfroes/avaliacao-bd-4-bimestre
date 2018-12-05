@@ -2,7 +2,6 @@
 
 include_once('../model/turma.php');
 include_once('../model/turmaDao.php');
-include_once('../views/criarTurma.html');
 include_once('../model/alunoDao.php');
 
 
@@ -19,6 +18,7 @@ for ($i=0; $i < count($nomes); $i++) {
     $aluno->setTurma($t);
     $alunoDao->insert($aluno);
 }
+header('Location: ../views/home.php');
 
 //print_r($t);
 

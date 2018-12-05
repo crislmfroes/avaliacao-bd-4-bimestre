@@ -19,16 +19,16 @@
         <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
                 <ul class="navbar-nav">
                   <li class="nav-item active">
-                    <a class="navbar-brand" href="home.html">Inicio</a>
+                    <a class="navbar-brand" href="home.php">Inicio</a>
                   </li>
                   <li class="nav-item active">
-                    <a class="nav-link" href="criarTurma.html">Criar Turma</a>
+                    <a class="nav-link" href="criarTurma.php">Criar Turma</a>
                   </li>
                   <li class="nav-item active">
-                    <a class="nav-link" href="criarAtividade.html">Criar Atividade</a>
+                    <a class="nav-link" href="criarAtividade.php">Criar Atividade</a>
                   </li>
                   <li class="nav-item active">
-                      <a class="nav-link" href="listaAtividades.html">Lista de Atividades</a>
+                      <a class="nav-link" href="listaAtividades.php">Lista de Atividades</a>
                     </li>
                 </ul>
         </nav>
@@ -53,12 +53,38 @@
                     <th scope="col">Aluno</th>
                     <th scope="col">E-mail</th>
                     <th scope="col">Nota</th>
-                    <th scope="col"> </th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
                     
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <?php
+                include_once('../model/alunoDao.php');
+                $alunoDao = new AlunoDao();
+                $alunos = $alunoDao->list(100, 0);
+                foreach ($alunos as $aluno) {
+                    if ($aluno->getTurma()->getId() == $_GET['codigo']) {?>
+                    <tr>
+                    <th scope="row"><?php echo $aluno->getId();?></th>
+                    <td><?php echo $aluno->getNome();?></td>
+                    <td><?php echo $aluno->getEmail();?></td>
+                    <td><?php echo $aluno->getNota();?></td>
+                    <td>
+                        <form action="alteraAluno.php" method="get">
+                            <input type="number" value=<?php echo $aluno->getId();?> style="display: none;"/>
+                            <btn type="submit" class="btn btn-light">Alterar aluno</btn>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="excluirAluno.php" method="get">
+                            <input type="number" value=<?php echo $aluno->getId();?> style="display: none;"/>
+                            <btn type="submit" class="btn btn-light">Excluir</btn>
+                        </form> 
+                    </td>
+                </tr>
+    <?php       } } ?>
+            <!--    <tr>
                     <th scope="row">1</th>
                     <td>Aluno 1</td>
                     <td> </td>
@@ -77,7 +103,7 @@
                         <a href="alteraNota.html" class="btn btn-light">Alterar nota</a>
                         <button type="button" class="btn btn-light">Exclui</button> </td>
                     </td>
-                </tr>
+                </tr> -->
 
             </tbody>
         </table>

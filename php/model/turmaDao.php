@@ -35,7 +35,7 @@ class TurmaDao extends Dao
         pg_close($con);
     }
 
-    function list(int $limit, int $offset) {
+    function list($limit, $offset) {
         $vetor = array($limit, $offset);
         $sql = "SELECT * FROM Turma LIMIT $1 OFFSET $2";
         $con = $this->getConexao();
@@ -50,7 +50,7 @@ class TurmaDao extends Dao
         return $turmas;
     }
 
-    public function find(int $id)
+    public function find($id)
     {
         $vetor = array($id);
         $sql = "SELECT * FROM Turma WHERE codTurma=$1";

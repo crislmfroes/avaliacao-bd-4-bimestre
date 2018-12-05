@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
     <link rel="stylesheet" href="estilo.css">
-    <title>Criar Turma</title>
+    <title>Alterar Aluno</title>
 </head>
 
 <body>
@@ -22,10 +22,10 @@
                     <a class="navbar-brand" href="home.php">Inicio</a>
                   </li>
                   <li class="nav-item active">
-                    <a class="nav-link" href="criarTurma.html">Criar Turma</a>
+                    <a class="nav-link" href="criarTurma.php">Criar Turma</a>
                   </li>
                   <li class="nav-item active">
-                    <a class="nav-link" href="criarAtividade.html">Criar Atividade</a>
+                    <a class="nav-link" href="criarAtividade.php">Criar Atividade</a>
                   </li>
                   <li class="nav-item active">
                       <a class="nav-link" href="listaAtividades.php">Lista de Atividades</a>
@@ -36,9 +36,9 @@
 
     <br>
     <br>
-    <h1 class="centro">Criar Turma</h1>
+    <h1 class="centro">Altera Aluno</h1>
     <br>
-    <h3 class="centro">Crie turmas e exerça funções no Virtual Class</h3>
+    <h3 class="centro">Preenxa o campo abaixo</h3>
     <br>
     <br>
 
@@ -48,43 +48,20 @@
 
      <div class="container ">
 
-            <form action="../controllers/inserirTurma.php" method="POST"> 
+            <form> 
         
                 <div class="form-group">
-                    <div class="col-md-6 offset-md-3">
-                        <label >Nome da Turma:</label>
+                    <div class="   col-md-6 offset-md-3">
+                        <label >Novo Nome:</label>
                         <input type="text" name="nomeTurma" class="form-control " placeholder="Digite o nome da sua turma">    
                     </div>
-                </div>
+                </div> 
+                 
+ 
         
                 <div class="form-group">
                     <div class="col-md-6 offset-md-3">
-                        <label> Ano: </label>  
-                        <input type="number" name="anoTurma" class="form-control" placeholder="ano">
-                    </div>
-                </div>  
-                 
-
-                <div class="form-group">
-                        <div class="col-md-6 offset-md-3 aluno-form">
-                            <label> Aluno: </label>
-                            <input type="text" name="aluno[]" class="form-control" placeholder="aluno">
-                            <input type="text" name="email[]" class="form-control" placeholder="email">
-                            <input type="button" value="Adicionar Aluno" class="btn btn-outline-secondary" name="">
-                        </div>
-                </div>
-
- <!--               <div class="form-group">
-                        <div class="col-md-6 offset-md-3 aluno-form">
-                            <label> Aluno: </label>
-                            <input type="text" name="aluno" class="form-control" placeholder="aluno">
-                            <input type="text" name="email" class="form-control" placeholder="email">
-                        </div>
-                </div>
--->        
-                <div class="form-group">
-                    <div class="col-md-6 offset-md-3">
-                        <input type="submit" value="Criar Turma!" class="btn btn-primary" name="">
+                        <input type="submit" value="Salvar" class="btn btn-dark" name="">
                 </div>
                 </div>
             </form> 
@@ -100,8 +77,6 @@
         crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
-    <script src="js/adicionarAluno.js"></script>
-    
 </body>
 
 </html>
