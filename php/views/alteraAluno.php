@@ -48,22 +48,39 @@
 
      <div class="container ">
 
-            <form> 
-        
+            <form action="../controllers/editaAluno.php" method="post"> 
                 <div class="form-group">
                     <div class="   col-md-6 offset-md-3">
                         <label >Novo Nome:</label>
-                        <input type="text" name="nomeTurma" class="form-control " placeholder="Digite o nome da sua turma">    
+                        <input type="text" name="nomeAluno" class="form-control " placeholder="Digite o novo nome:">    
                     </div>
                 </div> 
-                 
- 
-        
+                <div class="form-group">
+                    <div class="   col-md-6 offset-md-3">
+                        <label >Novo Email:</label>
+                        <input type="text" name="emailAluno" class="form-control " placeholder="Digite o novo email:">    
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="   col-md-6 offset-md-3">
+                        <label >Turma:</label>
+                        <select type="number" name="turmaAluno" class="form-control ">
+                            <?php
+                            include_once('../model/turmaDao.php');
+                            $turmaDao = new TurmaDao();
+                            $turmas = $turmaDao->list();
+                            foreach ($turmas as $turma) {?>
+                                <option value=<?php echo $turma->getId();?> ><?php echo $turma->getNome()?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                </div>
                 <div class="form-group">
                     <div class="col-md-6 offset-md-3">
                         <input type="submit" value="Salvar" class="btn btn-dark" name="">
+                    </div>
                 </div>
-                </div>
+                <input type="hidden" name="codigoAluno" value=<?php echo $_GET['codigoAluno'];?> />
             </form> 
         </div>
 

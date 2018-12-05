@@ -15,6 +15,8 @@ $a->setId($cod);
 $adao = new atividadeDao();
 $adao->update($a);
 //header('Location: ../views/listaAtividade.php');
+header('Location: ../views/home.php');
+
 
 
 

@@ -12,6 +12,7 @@ $atividade=$adao->find(intval($cod));
 $adao->delete($atividade);
 //var_dump($t);
 //header('Location: home.php');
+header('Location: ../views/home.php');
 
 
 ?>
