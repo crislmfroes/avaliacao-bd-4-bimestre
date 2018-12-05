@@ -19,16 +19,16 @@
         <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
                 <ul class="navbar-nav">
                   <li class="nav-item active">
-                    <a class="navbar-brand" href="home.php">Inicio</a>
+                    <a class="navbar-brand" href="home.html">Inicio</a>
                   </li>
                   <li class="nav-item active">
-                    <a class="nav-link" href="criarTurma.php">Criar Turma</a>
+                    <a class="nav-link" href="criarTurma.html">Criar Turma</a>
                   </li>
                   <li class="nav-item active">
-                    <a class="nav-link" href="criarAtividade.php">Criar Atividade</a>
+                    <a class="nav-link" href="criarAtividade.html">Criar Atividade</a>
                   </li>
                   <li class="nav-item active">
-                      <a class="nav-link" href="listaAtividades.php">Lista de Atividades</a>
+                      <a class="nav-link" href="listaAtividades.html">Lista de Atividades</a>
                     </li>
                 </ul>
         </nav>
