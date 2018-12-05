@@ -68,5 +68,24 @@ class AlunoDao extends Dao {
         pg_close($con);
         return $aluno;
     }
+
+    public function listByName($name, $limit, $offset) {
+        $vetor = array($name, $limit, $offset);
+        $sql = "SELECT * FROM Aluno WHERE lower(nome) like lower($1) LIMIT $2 OFFSET $3";
+        $con = $this->getConexao();
+        $res = pg_query_params($con, $sql, $vetor);
+        $alunos = array();
+        while ($assoc = pg_fetch_assoc($res)) {
+            $aluno = new Aluno($assoc['nome'], $assoc['email']);
+            $aluno->setNota((float) $assoc['nota']);
+            $turmaDao = new TurmaDao();
+            $turma = $turmaDao->find($assoc['codturma']);
+            $aluno->setTurma($turma);
+            $aluno->setId($assoc['codaluno']);
+            array_push($alunos, $aluno);
+        }
+        pg_close($con);
+        return $alunos;
+    }
 }
 ?>

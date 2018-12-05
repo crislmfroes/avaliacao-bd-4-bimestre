@@ -46,20 +46,18 @@
 
     <div class="container">
 
-        <form action="../controllers/inserirEntrega.php" method="get">
+        <form class="form-aluno" action="../controllers/inserirEntrega.php" method="get">
+        <div class="form-group">
+        <div class="col-md-6 offset-md-3">
+            <input type="number" name="aluno" id="aluno-id" style="display: none;"/>
+            <label>Pesquisar aluno</label>
+            <input type="text" autocomplete="off" class="form-control" id="aluno-search-input"/>
+            <ul class="list-group list-aluno-options" id="select-aluno">
+            </ul>
+        </div>
 
-        <select name="aluno" class="custom-select" id="inputGroupSelect02">
-            <?php
-            include_once('../model/alunoDao.php');
-            $dao = new AlunoDao();
-            $alunos = $dao->list(100, 0);
-            foreach ($alunos as $aluno) {
-                $id = $aluno->getId();
-                $nome = $aluno->getNome();
-                echo "<option value=\"$id\">$nome</option>";
-            }
-            ?>
-        </select>
+        </div>
+        
 <br>
 <br>
 <br>
@@ -75,7 +73,7 @@
 
     <div class="form-group">
         <div class="col-md-6 offset-md-3">
-            <input type="submit" value="Inserir nota" class="btn btn-danger" name="">
+            <input type="submit" value="Inserir nota" class="btn btn-danger submit-button" name="">
         </div>
 
     </form>
@@ -86,12 +84,15 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    <script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+    <script src="js/searchAluno.js"></script>
 </body>
 
 </html>
