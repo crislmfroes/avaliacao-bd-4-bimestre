@@ -17,10 +17,10 @@ class AtividadeDao extends Dao {
     }
 
     public function update($atividade) {
-        $vetor = array($atividade->getNome(), $atividade->getDataEntrega()->format('Y/m/d'),$atividade->getPeso(),
+        $vetor = array($atividade->getNome(), $atividade->getDataEntrega()->format('Y/m/d'), $atividade->getPeso(),
         $atividade->getDisciplina(), $atividade->getDescricao(), $atividade->getId());
         $sql = "UPDATE Atividade SET nome=$1, dataEntrega=$2,
-                peso=$3, disciplina=$4, descricao=$5 WHERE codAtividade=$5";
+                peso=$3, disciplina=$4, descricao=$5 WHERE codAtividade=$6";
         $con = $this->getConexao();
         $res = pg_query_params($con, $sql, $vetor);
         pg_close($con);

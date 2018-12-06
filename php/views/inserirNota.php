@@ -64,7 +64,7 @@
         <div class="form-group">
             <div class="col-md-6 offset-md-3">
                 <label>Inserir Nota</label>
-                <input type="number" name="nota" class="form-control" placeholder="Digite a nota">
+                <input min="0" max="100" type="number" name="nota" class="form-control" placeholder="Digite a nota">
         </div>
         <input style="display: none;" name="atividade" value=<?php echo $_POST['codigoAtividade'];?> />
 

@@ -84,7 +84,7 @@ include_once('../model/atividade.php');
                 <div class="form-group">
                         <div class="col-md-6 offset-md-3">
                             <label> Peso: </label>  
-                            <input type="number" name="peso" class="form-control" value="<?php if($cod) echo $a->getPeso();?>" placeholder="peso">
+                            <input min="0" max="100" type="number" name="peso" class="form-control" value="<?php if($cod) echo $a->getPeso();?>" placeholder="peso">
                         </div>
                  </div>
 		

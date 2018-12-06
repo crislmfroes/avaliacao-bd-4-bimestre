@@ -48,17 +48,20 @@
 
      <div class="container ">
 
-            <form action="../controllers/editaAluno.php" method="post"> 
+            <form action="../controllers/editaAluno.php" method="post">
+            <?php
+            include_once('../model/alunoDao.php');
+            $adao = new AlunoDao(); ?> 
                 <div class="form-group">
                     <div class="   col-md-6 offset-md-3">
                         <label >Novo Nome:</label>
-                        <input type="text" name="nomeAluno" class="form-control " placeholder="Digite o novo nome:">    
+                        <input type="text" name="nomeAluno" class="form-control " placeholder="Digite o novo nome:" value=<?php echo $adao->find($_GET['codigoAluno'])->getNome();?>>    
                     </div>
                 </div> 
                 <div class="form-group">
                     <div class="   col-md-6 offset-md-3">
                         <label >Novo Email:</label>
-                        <input type="text" name="emailAluno" class="form-control " placeholder="Digite o novo email:">    
+                        <input type="text" name="emailAluno" class="form-control " placeholder="Digite o novo email:" value=<?php echo $adao->find($_GET['codigoAluno'])->getEmail();?>>    
                     </div>
                 </div>
                 <div class="form-group">
@@ -70,7 +73,7 @@
                             $turmaDao = new TurmaDao();
                             $turmas = $turmaDao->list();
                             foreach ($turmas as $turma) {?>
-                                <option value=<?php echo $turma->getId();?> ><?php echo $turma->getNome()?></option>
+                                <option value=<?php echo $turma->getId();?> <?php if($turma->getId() == $adao->find($_GET['codigoAluno'])->getTurma()->getId()) {echo "selected";}?> ><?php echo $turma->getNome()?></option>
                             <?php } ?>
                         </select>
                     </div>

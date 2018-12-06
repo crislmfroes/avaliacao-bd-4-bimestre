@@ -55,6 +55,9 @@
                     <th scope="col">Disciplina</th>
                     <th scope="col">Data Entrega</th>
                     <th scope="col"> </th>
+                    <th scope="col"> </th>
+                    <th scope="col"> </th>
+                    <th scope="col"> </th>
                     
                 </tr>
             </thead>

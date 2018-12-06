@@ -2,6 +2,7 @@
 include_once('../views/criarAtividade.html');
 include_once('../model/atividadeDao.php');
 include_once('../model/atividade.php');
+var_dump($_POST);
 
 $cod = $_POST['cod'];
 $a = new Atividade($_POST['nomeAtividade'],new DateTime($_POST['dataEntrega']),
