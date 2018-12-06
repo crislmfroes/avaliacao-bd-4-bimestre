@@ -16,7 +16,7 @@ foreach ($entregas as $e) {
         $nota += $e->getNota() / $e->getAtividade()->getPeso();
     }
 }
-
+$aluno = $entrega->getAluno();
 $entregaDao->insert($entrega);
 $aluno->setNota($nota);
 $alunoDao->update($aluno);
